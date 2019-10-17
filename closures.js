@@ -23,7 +23,7 @@ function outer() {
 */
   
 // Code Here
-
+let inner = outer()
 
 
 //Once you do that, invoke inner.
@@ -52,7 +52,8 @@ function callFriend(name) {
 */
 
 //Code Here
-
+let callJake = callFriend('Jake')//callJake is just returning a function--dial
+callJake('435-555-9248')//so, callJake invoked with a parameter is equal to the function dial invoked with a parameter
 
 
 ////////// PROBLEM 3 //////////
@@ -62,7 +63,13 @@ function callFriend(name) {
 */
 
 //Code Here
-
+function makeCounter(){
+  let poobah = 0
+  return function(){
+    poobah = poobah + 1
+    return poobah
+  }
+}
 
 
 //Uncomment this once you make your function
@@ -89,7 +96,14 @@ function counterFactory(value) {
   // Code here.
 
   return {
-
+    inc () {
+      value = value + 1
+      return value
+    },
+    dec () {
+      value = value - 1
+      return value
+    }
   };
 }
 
@@ -113,9 +127,12 @@ function motivation( firstname, lastname ) {
   var welcomeText = "You're doing awesome, keep it up";
 
   // code message function here.
+  var message = function(){
+    return `${welcomeText} ${firstname} ${lastname}.`
+  }
 
   //Uncommment this to return the value of your message function
-  //return message;
+  return message;
 }
 
 var greeting = motivation('Billy', 'Bob'); // 'You're doing awesome keep it up Billy Bob.
@@ -144,9 +161,12 @@ var module = (function() {
   // outside our lexical scope
   return {
     // Code here.
+    publicMethod(){
+      return privateMethod()
+    }
   };
 })();
-
+module.publicMethod()
 
 
 ////////// PROBLEM 7 //////////
